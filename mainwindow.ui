@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>799</width>
+    <height>567</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="2" column="0">
+     <widget class="QComboBox" name="comboAdjustment">
+      <item>
+       <property name="text">
+        <string>No adjustment</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Adjust by ability</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Adjust by square root of ability</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QListWidget" name="listPlayers"/>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLineEdit" name="lineSearchPlayer"/>
+    </item>
+    <item row="0" column="1" rowspan="4">
+     <widget class="QPlainTextEdit" name="plainPlayerInfo"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QComboBox" name="comboSorting">
+      <item>
+       <property name="text">
+        <string>No sorting</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>By ability</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Attack rating</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Overall rating</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Midfield rating</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Winger rating</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QPushButton" name="pushModify">
+      <property name="text">
+       <string>Modify</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>799</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuActions">
+    <property name="title">
+     <string>Actions</string>
+    </property>
+    <addaction name="actionLeague_Info"/>
+    <addaction name="actionTrain_filtered"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuActions"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionLeague_Info">
+   <property name="text">
+    <string>League Info</string>
+   </property>
+  </action>
+  <action name="actionTrain_filtered">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Train selected</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
