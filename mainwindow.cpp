@@ -961,6 +961,7 @@ void MainWindow::on_actionLeague_Info_triggered()
 	}
 #else
 	QStringList list;
+#if 0
 	list << "Ancona";
 	list << "Cagliari";
 	list << "Castel di Sangro";
@@ -981,6 +982,26 @@ void MainWindow::on_actionLeague_Info_triggered()
 	list << "Treviso";
 	list << "Venezia";
 	list << "Verona";
+#else
+	list << "Atalanta";
+	list << "Bologna";
+	list << "Cagliari";
+	list << "Chievo";
+	list << "Fiorentina";
+	list << "Genoa";
+	list << "Inter";
+	list << "Juventus";
+	list << "Lazio";
+	list << "Milan";
+	list << "Napoli";
+	list << "Parma";
+	list << "Ravenna";
+	list << "Roma";
+	list << "Salernitana";
+	list << "Sampdoria";
+	list << "Torino";
+	list << "Udinese";
+#endif
 	for (int i = 0; i < teamdb.size(); i++) {
 		QString lname = teamdb[i]["UK Long Name"].toString();
 		QString sname = teamdb[i]["UK Short Name"].toString();
