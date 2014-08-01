@@ -32,6 +32,11 @@
         <string>Adjust by square root of ability</string>
        </property>
       </item>
+      <item>
+       <property name="text">
+        <string>Adjust by ability and potential</string>
+       </property>
+      </item>
      </widget>
     </item>
     <item row="3" column="0">
@@ -92,7 +97,7 @@
      <x>0</x>
      <y>0</y>
      <width>799</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

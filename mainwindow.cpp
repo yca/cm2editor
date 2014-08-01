@@ -18,13 +18,15 @@
 QHash<QString, PlayerAtr> PlayerData::attrIndex;
 
 int ratingAdjustment = 0;
-static inline double cfact(int ability)
+static inline double cfact(PlayerData *pd)
 {
 	double cf = 1;
 	if (ratingAdjustment == 1)
-		cf = ability / 200.0;
+		cf = pd->ability / 200.0;
 	else if (ratingAdjustment == 2)
-		cf = sqrt(ability / 200.0);
+		cf = sqrt(pd->ability / 200.0);
+	else if (ratingAdjustment == 3)
+		cf = pd->ability / 200.0 * pd->potential / 200.0;
 	return cf;
 }
 
@@ -40,20 +42,20 @@ static double overallRating(PlayerData *pd)
 			sum += pd->atts[i];
 	}
 	double avg = (double)sum / (ATT_COUNT - 3);
-	return avg * cfact(pd->ability);
+	return avg * cfact(pd);
 }
 
 static double attackRating(PlayerData *pd)
 {
 	int sum = pd->atts[ATT_PASSING] + pd->atts[ATT_HEADING] + pd->atts[ATT_STAMINA] + pd->atts[ATT_STREN] + pd->atts[ATT_CREAT] + pd->atts[ATT_SHOOTING];
-	return sum / 6.0 * cfact(pd->ability);
+	return sum / 6.0 * cfact(pd);
 }
 
 static double midfieldRating(PlayerData *pd)
 {
 	int sum = pd->atts[ATT_PASSING] + pd->atts[ATT_HEADING] + pd->atts[ATT_STAMINA] + pd->atts[ATT_STREN]
 			+ pd->atts[ATT_TACK] + pd->atts[ATT_POSI];
-	return sum / 6.0 * cfact(pd->ability);
+	return sum / 6.0 * cfact(pd);
 }
 
 static double wingerRating(PlayerData *pd)
@@ -61,7 +63,7 @@ static double wingerRating(PlayerData *pd)
 	int sum = pd->atts[ATT_PASSING] + pd->atts[ATT_HEADING] + pd->atts[ATT_STAMINA] + pd->atts[ATT_STREN]
 			+ pd->atts[ATT_TACK] + pd->atts[ATT_POSI] + pd->atts[ATT_PACE] + pd->atts[ATT_CREAT]
 			+ pd->atts[ATT_OFFTHEBALL];
-	return sum / 9.0 * cfact(pd->ability);
+	return sum / 9.0 * cfact(pd);
 }
 
 static QMap<QString, PlayerData *> *sortIndex;
@@ -755,7 +757,7 @@ void MainWindow::filterBestAttackers()
 	while (i.hasNext()) {
 		i.next();
 		PlayerData *pdata = i.value();
-		double cf = cfact(pdata->ability);
+		double cf = cfact(pdata);
 		if (pdata->atts[ATT_HEADING] * cf < 15.0)
 			continue;
 		if (pdata->atts[ATT_PASSING] * cf < 10.0)
@@ -782,7 +784,7 @@ void MainWindow::filterBestMidfielders()
 	while (i.hasNext()) {
 		i.next();
 		PlayerData *pdata = i.value();
-		double cf = cfact(pdata->ability);
+		double cf = cfact(pdata);
 		if (pdata->atts[ATT_HEADING] * cf < 10.0)
 			continue;
 		if (pdata->atts[ATT_PASSING] * cf < 10.0)
